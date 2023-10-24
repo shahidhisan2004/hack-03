@@ -20,4 +20,10 @@ int main(int argc, char *argv[]) {
   if (GB_used_so_far > GB_in_plan) {
         printf("You have already met your limit for this month. Looks like you're getting some overage charges...\n");
     } else if (average_daily_use > GB_in_plan / 30) 
+     {
+        double remaining_daily_allowance = (GB_in_plan - GB_used_so_far) / days_remaining;
+        printf("You are EXCEEDING your average daily use (%.3lf GB/day).\n", GB_in_plan / 30);
+        printf("Continuing this high usage, you'll exceed your data plan by %.0lf GB.\n", (average_daily_use - GB_in_plan / 30) * days_remaining);
+        printf("To stay below your data plan, use no more than %.3lf GB/day.\n", remaining_daily_allowance);
+    }
     
